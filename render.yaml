@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: paynexus-simulation
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    numInstances: 1
+    disk:
+      name: paynexus-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: COOKIE_SECURE
+        value: "1"
+      - key: PAYNEXUS_DB
+        value: /data/paynexus.sqlite3
